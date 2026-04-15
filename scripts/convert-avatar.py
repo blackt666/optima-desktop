@@ -63,11 +63,6 @@ bpy.ops.export_scene.gltf(
     filepath="{output_path}",
     export_format='GLB',
     export_materials='EXPORT',
-    export_colors=True,
-    export_cameras=False,
-    export_lights=False,
-    export_apply=True,
-    use_selection=False,
 )
 
 print(f"Exported to {{'{output_path}'}}")
