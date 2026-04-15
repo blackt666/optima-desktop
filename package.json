@@ -1,0 +1,51 @@
+{
+  "name": "optima-desktop",
+  "version": "0.1.0",
+  "description": "OPTIMA - macOS Desktop AI Assistant with 3D Avatar",
+  "main": "src/main/main.js",
+  "author": "Atilla Caliskan <atilla@optimaizer-saas.vercel.app>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "electron . --dev",
+    "build": "electron-builder --mac",
+    "build:dir": "electron-builder --mac --dir",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.optimaizer.optima-desktop",
+    "productName": "OPTIMA",
+    "category": "public.app-category.productivity",
+    "icon": "assets/icons/icon.icns",
+    "mac": {
+      "target": ["dmg"],
+      "artifactName": "${productName}-${version}-mac.${ext}",
+      "category": "public.app-category.productivity",
+      "minimumSystemVersion": "12.0"
+    },
+    "dmg": {
+      "sign": false
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "!assets/**/*.psd"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/sophia.glb",
+        "to": "sophia.glb",
+        "filter": ["**/*"]
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "three": "^0.170.0",
+    "@sentry/electron": "^5.0.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}

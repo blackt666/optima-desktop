@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=360, height=420, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://api.elevenlabs.io https://*.elevenlabs.io; media-src 'self' blob:;">
+  <title>OPTIMA</title>
+  <link rel="stylesheet" href="styles/app.css" />
+</head>
+<body>
+  <!-- 3D Avatar Canvas (Three.js renders here) -->
+  <div id="avatar-container">
+    <canvas id="avatar-canvas"></canvas>
+  </div>
+
+  <!-- Speech indicator bubble -->
+  <div id="speech-bubble" class="hidden">
+    <div id="speech-text"></div>
+    <div id="speech-wave">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Status indicator (top-right) -->
+  <div id="status-bar">
+    <span id="status-dot" class="idle"></span>
+    <span id="status-text">ready</span>
+  </div>
+
+  <!-- Push-to-talk button overlay (bottom) -->
+  <div id="ptt-area">
+    <button id="ptt-btn" title="Hold to talk (⌘⇧O)">
+      <span id="ptt-icon">🎙️</span>
+      <span id="ptt-label">Hold to talk</span>
+    </button>
+  </div>
+
+  <!-- Settings panel (slides in) -->
+  <div id="settings-panel" class="hidden">
+    <div class="settings-header">
+      <h2>⚙️ Settings</h2>
+      <button id="close-settings">✕</button>
+    </div>
+    <div class="settings-body">
+      <label>
+        STT Provider
+        <select id="stt-provider">
+          <option value="elevenlabs">ElevenLabs</option>
+          <option value="whisper">Whisper (local)</option>
+        </select>
+      </label>
+      <label>
+        TTS Voice
+        <select id="tts-voice"></select>
+      </label>
+      <label>
+        Global Hotkey
+        <input type="text" id="hotkey" value="⌘⇧O" readonly />
+      </label>
+      <label class="toggle-row">
+        <span>Always Listening</span>
+        <input type="checkbox" id="always-listening" />
+      </label>
+      <label class="toggle-row">
+        <span>Avatar Visible</span>
+        <input type="checkbox" id="avatar-visible" checked />
+      </label>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

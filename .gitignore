@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Environment (contains API keys)
+.env
+
+# Build output
+dist/
+out/
+*.dmg
+*.pkg
+*.zip
+
+# Blender cache
+*.blend1
+*.bak
+__pycache__/
+
+# Temp files
+*.tmp
+*.log
+.DS_Store
+
+# Assets (large binary files — keep only committed in assets/)
+# sophia.glb should be generated locally from the FBX
+assets/*.glb
+assets/*.fbx
+!assets/icons/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
